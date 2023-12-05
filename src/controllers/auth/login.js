@@ -1,48 +1,26 @@
-// const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
 const { User } = require("../../schemas/user");
-// const { authSchema } = require("../../schemas/joi");
 
-const { ACCESS_SECRET_KEY, REFRESH_SECRET_KEY } = process.env;
 
-async function login(req, res, next) {
+async function login(req, res) {
   try {
-    const { email } = req.body;
-    // const { error } = authSchema.validate(req.body);
-    // if (error) {
-    //   return res.status(400).json({ message: "Wrong email or password" });
-    // }
+    const  { nickName }  = req.body;
+    console.log("nickName",nickName)
 
-    const user = await User.findOne({ email });
-    // const userPassword = await bcrypt.compare(password, user.password);
-    // if (!user || !userPassword) {
-    //   return res.status(401).json({ message: "Email or password is wrong" });
-    // }
+    const user = await User.findOne({ nickName });
+    console.log(user)
 
-    // if (!user.verify) {
-    //   return res.status(401).json({ message: "Your Email is not verifyied!" });
-    // }
-
-    const payload = {
-      id: user._id,
-    };
-    const accessToken = jwt.sign(payload, ACCESS_SECRET_KEY, {
-      expiresIn: "365d",
-    });
-    const refreshToken = jwt.sign(payload, REFRESH_SECRET_KEY, {
-      expiresIn: "365d",
+    if(user){
+      res.status(409).json({ message: "nickName must be unique" });
+      return;
+    }
+    const newUser = await User.create({
+      nickName: nickName,
     });
 
-    await User.findByIdAndUpdate(user._id, { accessToken, refreshToken });
-
-    return res.status(200).json({
+      return res.status(200).json({
       status: "success",
       code: 200,
-      accessToken: accessToken,
-      refreshToken: refreshToken,
-      user: {
-        email: user.email,
-      },
+      newUser,
     });
   } catch (error) {
     return res.status(500).json({ message: error.message });
