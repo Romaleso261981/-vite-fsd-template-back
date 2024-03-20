@@ -1,4 +1,4 @@
-const mockdataKozirki = [
+const Kozirki = [
   {
     id: "1",
     title: "КОВАНІ КОЗИРКИ",
@@ -213,7 +213,7 @@ async function getAllKozirki(req, res) {
     return res.status(200).json({
       status: "success",
       code: 200,
-      mockdataKozirki
+      Kozirki
     });
   } catch (error) {
     return res.status(500).json({ message: error.message });

@@ -1,4 +1,4 @@
-const mockdataEliteIronGates = [
+const EliteIronGates = [
   {
     id: "1",
     title: "КОВАНІ ВОРОТА З МОНТАЖЕМ",
@@ -150,7 +150,7 @@ async function getAllEliteIronGates(req, res) {
     return res.status(200).json({
       status: "success",
       code: 200,
-      mockdataEliteIronGates
+      EliteIronGates
     });
   } catch (error) {
     return res.status(500).json({ message: error.message });

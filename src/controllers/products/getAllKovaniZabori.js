@@ -1,4 +1,4 @@
-const mockdataKovaniZabori = [
+const KovaniZabori = [
   {
     id: "1",
     title: "КОВАНІ ЗАБОРИ",
@@ -302,7 +302,7 @@ async function getAllKovaniZabori(req, res) {
     return res.status(200).json({
       status: "success",
       code: 200,
-      mockdataKovaniZabori
+      KovaniZabori
     });
   } catch (error) {
     return res.status(500).json({ message: error.message });
