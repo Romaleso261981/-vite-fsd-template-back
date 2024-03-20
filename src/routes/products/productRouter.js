@@ -8,24 +8,18 @@ authRouter.get(
   "/all_products_group",
   ctrlWrapper(productsController.getAllProductsGroup)
 );
+authRouter.get("/all_kozirki", ctrlWrapper(productsController.getAllKozirki));
 authRouter.get(
-  "/all_products_group",
-  ctrlWrapper(productsController.getAllKozirki)
-);
-authRouter.get(
-  "/all_kovani_zabori",
+  "/all_zabori",
   ctrlWrapper(productsController.getAllKovaniZabori)
 );
+authRouter.get("/all_grati", ctrlWrapper(productsController.getAllKovaniGrati));
 authRouter.get(
-  "/all_kovani_grati",
-  ctrlWrapper(productsController.getAllKovaniGrati)
-);
-authRouter.get(
-  "/all_gate_with_corrugated_board",
+  "/all_gate_corrugated_board",
   ctrlWrapper(productsController.getAllGateWithCorrugatedBoard)
 );
 authRouter.get(
-  "/all_elite_iron_gates",
+  "/all_elite_gates",
   ctrlWrapper(productsController.getAllEliteIronGates)
 );
 
