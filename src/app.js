@@ -4,6 +4,7 @@ const cors = require("cors");
 
 const authRouter = require("./routes/auth/authRouter");
 const productRouter = require("./routes/products/productRouter");
+const googleWebhook = require("./controllers/googleWebhook/googleWebhook");
 
 const app = express();
 
@@ -14,6 +15,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/auth", authRouter);
+app.post("/webhook", googleWebhook);
 app.use("/products", productRouter);
 
 app.use((req, res) => {
