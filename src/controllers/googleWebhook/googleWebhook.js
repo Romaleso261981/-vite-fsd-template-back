@@ -10,28 +10,28 @@ async function googleWebhook(req, res) {
 
     // Витягування необхідних даних з тіла запиту (згідно з ТЗ)
     const {
-      utmSource,
-      utmMedium,
-      utmCampaign,
-      utmTerm,
-      utmContent,
+      utm_source,
+      utm_medium,
+      utm_campaign,
+      utm_term,
+      utm_content,
       fbp,
       fbc,
-      ipAddress,
-      userAgent
+      ip_address,
+      user_agent
     } = requestData;
 
     // Формування повідомлення для Telegram
     const message = `
-      UTM Source: ${utmSource}
-      UTM Medium: ${utmMedium}
-      UTM Campaign: ${utmCampaign}
-      UTM Term: ${utmTerm}
-      UTM Content: ${utmContent}
+      UTM Source: ${utm_source}
+      UTM Medium: ${utm_medium}
+      UTM Campaign: ${utm_campaign}
+      UTM Term: ${utm_term}
+      UTM Content: ${utm_content}
       FBP: ${fbp}
       FBC: ${fbc}
-      IP Address: ${ipAddress}
-      User Agent: ${userAgent}
+      IP Address: ${ip_address}
+      User Agent: ${user_agent}
     `;
 
     // Надсилання повідомлення до Telegram
